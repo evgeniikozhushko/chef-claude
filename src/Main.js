@@ -8,9 +8,9 @@ export default function Main() {
   // This state holds an array of ingredients.
   const [ingredients, setIngredients] = useState([
     "all the main spices",
-    "pasta",
-    "ground beef",
-    "tomato paste"
+    "sweet potato",
+    "eggs",
+    "zucchini"
   ]);
 
   // **Recipe Visibility State**
@@ -37,7 +37,7 @@ export default function Main() {
   // When called, it sends the ingredients array to the AI function,
   // waits for the recipe text, then updates state.
   async function handleGetRecipe() {
-    const recipeMarkdown = await getRecipeFromChefClaude(ingredients);
+    // const recipeMarkdown = await getRecipeFromChefClaude(ingredients);
     try {
       // Pass the ingredients array to the AI function.
       const response = await getRecipeFromChefClaude(ingredients);

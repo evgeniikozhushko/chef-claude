@@ -5,8 +5,8 @@ import { HfInference } from '@huggingface/inference';
 const HF_ACCESS_TOKEN = process.env.REACT_APP_HF_ACCESS_TOKEN;
 const hf = new HfInference(HF_ACCESS_TOKEN);
 
-// Backend API URL
-const API_URL = 'http://localhost:5000/api';
+// Backend API URL - updated to port 3001
+const API_URL = 'http://localhost:3001/api';
 
 export async function getRecipeFromChefClaude(ingredientsArr) {
   try {
