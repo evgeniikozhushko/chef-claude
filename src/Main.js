@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import IngredientsList from "./components/IngredientsList";
 import ClaudeRecipe from "./components/ClaudeRecipe";
 import { getRecipeFromChefClaude } from "./ai"; // Import from ai.js
+import { Button } from "@/components/ui/button"
 
 export default function Main() {
   // **Ingredients State**
@@ -62,7 +63,7 @@ export default function Main() {
           aria-label="Add ingredient"
           name="ingredient"
         />
-        <button type="submit">Add ingredient</button>
+        <Button type="submit" variant="default" size="default">Add your ingredients</Button>
       </form>
 
       {/* Render the IngredientsList component and pass down the ingredients array
