@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import IngredientsList from "./components/IngredientsList";
 import ClaudeRecipe from "./components/ClaudeRecipe";
 import { getRecipeFromChefClaude } from "./ai"; // Import from ai.js
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function Main() {
   // **Ingredients State**
@@ -9,8 +12,7 @@ export default function Main() {
   const [ingredients, setIngredients] = useState([
     "all the main spices",
     "sweet potato",
-    "eggs",
-    "zucchini"
+    "eggs"
   ]);
 
   // **Recipe Visibility State**
@@ -23,14 +25,14 @@ export default function Main() {
 
   // **Function to Add Ingredients**
   // Called when the form is submitted.
-  function addIngredient(event) {
-    event.preventDefault(); // Prevents the page from reloading.
-    const formData = new FormData(event.currentTarget);
+  function addIngredient(formEvent) {
+    formEvent.preventDefault(); // Prevents the page from reloading.
+    const formData = new FormData(formEvent.currentTarget);
     const newIngredient = formData.get("ingredient");
     // Append the new ingredient to the existing array.
     setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
     // Optionally, clear the form after submission:
-    event.target.reset();
+    formEvent.target.reset();
   }
 
   // **Async Function to Fetch Recipe from AI**
@@ -52,31 +54,38 @@ export default function Main() {
   }
 
   return (
-    <main>
-      <h2>Hello World</h2>
-      {/* Form for adding new ingredients */}
-      <form onSubmit={addIngredient} className="add-ingredient-form">
-        <input
-          type="text"
-          placeholder="e.g. oregano"
-          aria-label="Add ingredient"
-          name="ingredient"
-        />
-        <button type="submit">Add ingredient</button>
-      </form>
+    <main className="container mx-auto">
+      <Card className="mb-8 text-left">
+        <CardHeader>
+          <CardTitle>Chef Claude App</CardTitle>
+          <CardDescription>Add 3 or more ingredients</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={addIngredient} className="flex gap-2 mb-6">
+            <Input
+              type="text"
+              placeholder="e.g. oregano"
+              aria-label="Add ingredient"
+              name="ingredient"
+              className="flex-1"
+            />
+            <Button type="submit">Add an ingredient</Button>
+          </form>
 
-      {/* Render the IngredientsList component and pass down the ingredients array
-      and a function to toggle the recipe view */}
-      {ingredients.length > 0 && (
-        <IngredientsList
-          ingredients={ingredients}
-          handleGetRecipe={handleGetRecipe} // We pass handleGetRecipe so that when the button is clicked, the AI call is made.
-        />
-      )}
+          {/* Render the IngredientsList component and pass down the ingredients array
+          and a function to toggle the recipe view */}
+          {ingredients.length > 0 && (
+            <IngredientsList
+              ingredients={ingredients}
+              handleGetRecipe={handleGetRecipe} // We pass handleGetRecipe so that when the button is clicked, the AI call is made.
+            />
+          )}
 
-      {/* Conditionally render the ClaudeRecipe component if recipeShown is true.
-      Pass the recipe text as a prop so the component can display it. */}
-      {recipeShown && <ClaudeRecipe recipeText={recipeText} />}
+          {/* Conditionally render the ClaudeRecipe component if recipeShown is true.
+          Pass the recipe text as a prop so the component can display it. */}
+          {recipeShown && <ClaudeRecipe recipeText={recipeText} />}
+        </CardContent>
+      </Card>
     </main>
   );
 }

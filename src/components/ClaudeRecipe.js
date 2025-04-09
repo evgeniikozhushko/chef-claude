@@ -1,13 +1,16 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function ClaudeRecipe({ recipeText }) {
   return (
-    <section>
-      <h2>Chef Claude Recommends:</h2>
-      <article className="suggested-recipe-container" aria-live="polite">
-        {/* For now, we simply display the raw markdown text returned by the AI. */}
-        <pre>{recipeText}</pre>
-      </article>
-    </section>
+    <Card className="suggested-recipe-container">
+      <CardHeader>
+        <CardTitle className="text-left">Suggested Recipe</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ReactMarkdown>{recipeText}</ReactMarkdown>
+      </CardContent>
+    </Card>
   );
 }
