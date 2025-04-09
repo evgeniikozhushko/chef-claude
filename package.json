@@ -29,6 +29,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.55.0",
+    "react-markdown": "^10.1.0",
     "react-scripts": "5.0.1",
     "stream-browserify": "^3.0.0",
     "tailwind-merge": "^3.2.0",
@@ -63,6 +64,7 @@
   "devDependencies": {
     "@shadcn/ui": "^0.0.4",
     "detect-port": "^2.1.0",
-    "detect-port-alt": "^1.1.6"
+    "detect-port-alt": "^1.1.6",
+    "dotenv-expand": "^12.0.1"
   }
 }
