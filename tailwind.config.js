@@ -67,7 +67,57 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: 'hsl(var(--foreground))',
+            a: {
+              color: 'hsl(var(--primary))',
+              '&:hover': {
+                color: 'hsl(var(--primary))',
+                textDecoration: 'underline',
+              },
+            },
+            h1: {
+              color: 'hsl(var(--foreground))',
+              fontWeight: '700',
+            },
+            h2: {
+              color: 'hsl(var(--foreground))',
+              fontWeight: '600',
+            },
+            h3: {
+              color: 'hsl(var(--foreground))',
+              fontWeight: '600',
+            },
+            h4: {
+              color: 'hsl(var(--foreground))',
+              fontWeight: '600',
+            },
+            code: {
+              color: 'hsl(var(--foreground))',
+              backgroundColor: 'hsl(var(--muted))',
+              borderRadius: '0.25rem',
+              padding: '0.125rem 0.25rem',
+            },
+            'pre code': {
+              backgroundColor: 'transparent',
+              borderRadius: '0',
+              padding: '0',
+            },
+            pre: {
+              backgroundColor: 'hsl(var(--muted))',
+              borderRadius: '0.5rem',
+            },
+            blockquote: {
+              color: 'hsl(var(--muted-foreground))',
+              borderLeftColor: 'hsl(var(--border))',
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 }
