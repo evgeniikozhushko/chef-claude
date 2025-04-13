@@ -98,12 +98,16 @@ main {
   line-height: 28px;
 }
 
+.recipe-card-header {
+  background-color: #F0EFEB !important;
+}
+
 .get-recipe-container {
   display: flex;
   justify-content: space-between;
   align-items: start;
   border-radius: 8px;
-  background: #F0EFEB;
+  background-color: #F0EFEB !important;
   padding: 10px 28px;
   margin-top: 20px;
 }
