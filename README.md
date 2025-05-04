@@ -1,71 +1,74 @@
-# Getting Started with Create React App
+Chef Claude Recipe Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Chef Claude is a React-based web application that helps you generate cooking recipes on the fly based on the ingredients you have on hand. Powered by AI, it communicates with the Anthropic Claude model (and optionally Mistral) to craft markdown-formatted recipes that you can scroll into view and follow step by step.
 
-## Available Scripts
+Features
 
-In the project directory, you can run:
+Ingredient List Management: Add and remove ingredients dynamically.
 
-### `npm start`
+AI-Generated Recipes: Send your current ingredient list to an AI model and receive a formatted recipe suggestion.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Smooth Scroll: Automatically scroll the UI to the recipe section when a new recipe is loaded.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Responsive UI: Built with React hooks (useState, useEffect, useRef) for real-time updates and side-effects.
 
-### `npm test`
+Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone the repository
 
-### `npm run build`
+git clone https://github.com/your-username/chef-claude.git
+cd chef-claude
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Set up environment variables
 
-### `npm run eject`
+Create a .env file in the project root.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Add your API keys for Anthropic and Hugging Face:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ANTHROPIC_API_KEY=your_anthropic_key_here
+HF_ACCESS_TOKEN=your_hf_access_token_here
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Start the development server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm start
 
-## Learn More
+Open in browser
+Navigate to http://localhost:3000 to begin adding ingredients and generating recipes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+src/Main.js — Main React component handling state and side-effects.
 
-### Code Splitting
+src/components/IngredientsList.js — Renders the ingredient list and the "Get a recipe" button.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+src/components/ClaudeRecipe.js — Displays the AI-generated markdown recipe.
 
-### Analyzing the Bundle Size
+src/ai/index.js — Functions to call external AI APIs (getRecipeFromChefClaude, getRecipeFromMistral).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Learnings & Patterns
 
-### Making a Progressive Web App
+React Hooks: useState for local state, useEffect for side-effects (fetching data, DOM interactions), useRef for direct DOM access.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Conditional Rendering: Show ingredient list only if items exist, and only show the recipe panel when a recipe is returned.
 
-### Advanced Configuration
+Scroll into View: Use a ref and effect to bring the recipe section into view smoothly.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Contributing
 
-### Deployment
+Fork the repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Create a feature branch (git checkout -b feature-name)
 
-### `npm run build` fails to minify
+Commit your changes (git commit -m "Add new feature")
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# chef-claude
+Push to the branch (git push origin feature-name)
+
+Open a pull request
+
+License
+
+This project is licensed under the MIT License.
