@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import IngredientsList from "./components/IngredientsList";
 import ClaudeRecipe from "./components/ClaudeRecipe";
 import { getRecipeFromChefClaude } from "./ai"; // Import from ai.js
@@ -10,18 +10,26 @@ export default function Main() {
   // **Ingredients State**
   // This state holds an array of ingredients.
   const [ingredients, setIngredients] = useState([
-    "all the main spices",
-    "sweet potato",
-    "eggs"
+    "All the main spices."
   ]);
 
   // **Recipe Visibility State**
   // This boolean controls whether the recipe should be shown.
   const [recipeShown, setRecipeShown] = useState(false);
+  const recipeSection = React.useRef(null)
+  console.log(recipeSection)
+
+  useEffect(() => {
+    if (recipeSection.current) {
+      recipeSection.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [recipeShown]);
+
 
   // **Recipe Text State**
   // This state holds the text (markdown) returned by the AI.
   const [recipeText, setRecipeText] = useState("");
+
 
   // **Function to Add Ingredients**
   // Called when the form is submitted.
@@ -76,8 +84,9 @@ export default function Main() {
           and a function to toggle the recipe view */}
           {ingredients.length > 0 && (
             <IngredientsList
+              recipeSection={recipeSection}
               ingredients={ingredients}
-              handleGetRecipe={handleGetRecipe} // We pass handleGetRecipe so that when the button is clicked, the AI call is made.
+              handleGetRecipe={handleGetRecipe}
             />
           )}
 
