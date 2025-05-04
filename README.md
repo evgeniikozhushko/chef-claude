@@ -1,74 +1,86 @@
-Chef Claude Recipe Generator
+# Chef Claude Recipe Generator
 
 Chef Claude is a React-based web application that helps you generate cooking recipes on the fly based on the ingredients you have on hand. Powered by AI, it communicates with the Anthropic Claude model (and optionally Mistral) to craft markdown-formatted recipes that you can scroll into view and follow step by step.
 
-Features
+## Features
 
-Ingredient List Management: Add and remove ingredients dynamically.
+* **Ingredient List Management:** Add and remove ingredients dynamically.
+* **AI-Generated Recipes:** Send your current ingredient list to an AI model (Claude or Mistral) and receive a formatted recipe suggestion.
+* **Smooth Scroll:** Automatically scroll the UI to the recipe section when a new recipe is loaded.
+* **Responsive UI:** Built with React hooks (`useState`, `useEffect`, `useRef`) for real-time updates and side-effects.
 
-AI-Generated Recipes: Send your current ingredient list to an AI model and receive a formatted recipe suggestion.
+## Getting Started
 
-Smooth Scroll: Automatically scroll the UI to the recipe section when a new recipe is loaded.
+1. **Clone the repository**
 
-Responsive UI: Built with React hooks (useState, useEffect, useRef) for real-time updates and side-effects.
+   ```bash
+   git clone https://github.com/your-username/chef-claude.git
+   cd chef-claude
+   ```
 
-Getting Started
+2. **Install dependencies**
 
-Clone the repository
+   ```bash
+   npm install
+   ```
 
-git clone https://github.com/your-username/chef-claude.git
-cd chef-claude
+3. **Set up environment variables**
 
-Install dependencies
+   * Create a `.env` file in the project root.
+   * Add your API keys for Anthropic and Hugging Face:
 
-npm install
+     ```bash
+     ANTHROPIC_API_KEY=your_anthropic_key_here
+     HF_ACCESS_TOKEN=your_hf_access_token_here
+     ```
 
-Set up environment variables
+4. **Start the development server**
 
-Create a .env file in the project root.
+   ```bash
+   npm start
+   ```
 
-Add your API keys for Anthropic and Hugging Face:
+5. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000) to begin adding ingredients and generating recipes.
 
-ANTHROPIC_API_KEY=your_anthropic_key_here
-HF_ACCESS_TOKEN=your_hf_access_token_here
+## Project Structure
 
-Start the development server
+```
+src/
+├── ai/
+│   └── index.js          # API calls: getRecipeFromChefClaude, getRecipeFromMistral
+├── components/
+│   ├── IngredientsList.js # Renders ingredient list & "Get a recipe" button
+│   └── ClaudeRecipe.js    # Displays AI-generated markdown recipe
+└── Main.js               # Main React component (state & side-effects)
+```
 
-npm start
+## Learnings & Patterns
 
-Open in browser
-Navigate to http://localhost:3000 to begin adding ingredients and generating recipes.
+* **React Hooks**: `useState` for local state, `useEffect` for side-effects (fetching data, DOM interactions), `useRef` for direct DOM access.
+* **Conditional Rendering**: Show ingredient list only if items exist, and show the recipe panel only when a recipe is returned.
+* **Smooth Scroll**: Use a ref and effect to bring the recipe section into view smoothly.
 
-Project Structure
+## Contributing
 
-src/Main.js — Main React component handling state and side-effects.
+1. Fork the repo
+2. Create a feature branch:
 
-src/components/IngredientsList.js — Renders the ingredient list and the "Get a recipe" button.
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes:
 
-src/components/ClaudeRecipe.js — Displays the AI-generated markdown recipe.
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to your branch:
 
-src/ai/index.js — Functions to call external AI APIs (getRecipeFromChefClaude, getRecipeFromMistral).
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. Open a pull request on GitHub.
 
-Learnings & Patterns
+## License
 
-React Hooks: useState for local state, useEffect for side-effects (fetching data, DOM interactions), useRef for direct DOM access.
-
-Conditional Rendering: Show ingredient list only if items exist, and only show the recipe panel when a recipe is returned.
-
-Scroll into View: Use a ref and effect to bring the recipe section into view smoothly.
-
-Contributing
-
-Fork the repo
-
-Create a feature branch (git checkout -b feature-name)
-
-Commit your changes (git commit -m "Add new feature")
-
-Push to the branch (git push origin feature-name)
-
-Open a pull request
-
-License
-
-This project is licensed under the MIT License.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
