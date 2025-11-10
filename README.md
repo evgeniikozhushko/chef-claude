@@ -1,5 +1,7 @@
 # Chef Claude Recipe Generator
 
+Try it [https://chefclaudeapp.netlify.app/](chefclaudeapp.netlify.app)
+
 Chef Claude is a React-based web application that helps you generate cooking recipes on the fly based on the ingredients you have on hand. Powered by AI, it communicates with the Anthropic Claude model (and optionally Mistral) to craft markdown-formatted recipes that you can scroll into view and follow step by step.
 
 ## Features
